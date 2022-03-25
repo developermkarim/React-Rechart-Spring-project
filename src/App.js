@@ -1,23 +1,68 @@
-import logo from './logo.svg';
+import { useEffect, useState } from 'react';
 import './App.css';
+import Cart from './Components/Contents/Cart';
+import Header from './Components/Header/Header';
 
 function App() {
+const [Guns, SetGuns] = useState([])
+
+const [Carts, setCarts] = useState([])
+console.log(Carts);
+
+const handlecartToadd = (carWithParam)=> {
+  const newGunCart = [...Carts , carWithParam];
+  setCarts(newGunCart);
+
+}
+
+const [Count, SetCount] = useState(0)
+const countCart = () => SetCount(Count + 1)
+
+useEffect(()=>{
+  fetch('guns/data.json')
+  .then(res => res.json())
+  .then(data => SetGuns(data))
+},[])
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <div className="headerstyle">
+         <Header counterGun = {Count}
+         />
+
+         
+      </div>
+      
+      <div style={{backgroundColor:'violet',display:'flex',justifyContent:'space-evenly',flexWrap:'nowrap'}}>
+            {
+              Carts.map(perCart => (
+
+                <h4 style={{border:'3px solid grey',padding:'5px'}}>Name : {perCart.name}</h4>
+              ))
+            }
+          </div>
+       
+     
+      <div className='gunStyle cart-container'>
+         {
+        Guns.map(gun => 
+
+           <Cart
+             conter ={countCart}
+
+            gunsInfo = {gun}
+
+            key={gun.id}
+          
+            clickAddToCart = {handlecartToadd}
+           ></Cart>
+           
+           )
+      }
+      </div>
+     
+     
     </div>
   );
 }
