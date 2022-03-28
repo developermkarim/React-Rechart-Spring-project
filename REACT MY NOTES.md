@@ -461,3 +461,21 @@ App.js:12 (3) [{…}, {…}, {…}]
 ## React Modal
 
 to know more about Design React modal follow the React SPA conceptual session by Mir hussain, section higlight = at 2 hour:20 minite.
+
+/// Module 50, Milestone 9
+### Bootstrap using with React
+** generally we ink the CDN link with the index.html pf public, then bootstrap all class and build in component will be workable.
+ but professionally, we will use bootstrap according to https://react-bootstrap.github.io/getting-started/introduction.
+  and run this command from cdn or VS code terminal   ---=== npm install react-bootstrap bootstrap@5.1.3 ===---
+
+moreover to connect follow this documentation  {/* The following line can be included in your src/index.js or App.js file*/}
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+### module about Tailwind using with React js.
+In case of using Hero Icons run this to terminal or cmd ---> npm install @heroicons/react  <----
+and have to use icons by CercleIcon Icon this name must be added with the name .The name will be camel case.Every syllable must be written with capitalization.
+
+ import { MenuIcon, XIcon } from '@heroicons/react/solid' is be imported in top.
+HeroIcon or any icon can be used Icon Name or svg like this 
+
+  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
